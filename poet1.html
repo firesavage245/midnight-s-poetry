@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midnight's Poetry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #D8BFD8; /* Light purple */
+            color: #4B0082; /* Dark purple text */
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .vip {
+            background-color: gold;
+            color: black;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .poetry-box {
+            border: 2px solid gold;
+            background-color: white;
+            color: #4B0082;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        .upload-form {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 80%;
+            border: 2px solid gold;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        button {
+            background-color: gold;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Content will be dynamically inserted by JavaScript -->
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const app = document.getElementById("app");
+            
+            app.innerHTML = `
+                <h1>Welcome to Midnight's Poetry</h1>
+                <p>Upload and create your own poetry. Join our VIP membership for $5/month to unlock exclusive perks!</p>
+                
+                <div class="vip">
+                    <h2>VIP Membership</h2>
+                    <p>Join our poetry workshops, get featured on our homepage, and participate in exclusive events for just $5/month.</p>
+                    <button id="vip-btn">Join VIP</button>
+                </div>
+                
+                <h2>Your Poetry</h2>
+                <div id="poetry-list"></div>
+                
+                <div class="upload-form">
+                    <h3>Create a Poem</h3>
+                    <textarea id="poem-text" placeholder="Write your poem here..." rows="5" cols="50"></textarea><br>
+                    <button id="submit-btn">Submit</button>
+                </div>
+            `;
+            
+            document.getElementById("vip-btn").addEventListener("click", function() {
+                alert("Subscription feature coming soon!");
+            });
+            
+            document.getElementById("submit-btn").addEventListener("click", function() {
+                let poemText = document.getElementById("poem-text").value.trim();
+                if (poemText === "") {
+                    alert("Please write something before submitting.");
+                    return;
+                }
+                let poetryList = document.getElementById("poetry-list");
+                let newPoem = document.createElement("div");
+                newPoem.classList.add("poetry-box");
+                newPoem.textContent = poemText;
+                poetryList.appendChild(newPoem);
+                document.getElementById("poem-text").value = "";
+            });
+        });
+    </script>
+</body>
+</html>
